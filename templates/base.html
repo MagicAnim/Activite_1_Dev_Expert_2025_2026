@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Mon app</title>
+</head>
+
+<body>
+
+    <!-- En tête de notre application web -->
+    <header class="bg-amber-200 p-10 flex justify-between border border-amber-400">
+        <!-- Titre -->
+        <h1 class="text-3xl font-semibold">Le bon Koin</h1>
+
+        <!-- Le Menu -->
+        <nav>
+            <ul class="flex space-x-15 text-xl font-semibold">
+                <li><a href="/"> Accueil</a></li>
+                <li><a href="/login"> Se connecter</a></li>
+                <li><a href="/register"> S'enregistrer</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Le Main zone centrale du site web -->
+    <main class="py-10">
+      {% block content %}
+
+      {% endblock %}
+    </main>
+
+
+    <footer class="absolute bottom-0 w-full bg-amber-200 p-10 flex justify-center border border-amber-400">
+        <p>Copyright : LeBonCoin © </p>
+        <p>Contact : LeBonCoin@gmail.com </p>
+
+    </footer>
+
+
+</body>
+
+</html>
