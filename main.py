@@ -100,7 +100,7 @@ def logout():
     return redirect(url_for("index"))
 
 # On créer le route pour la publication d'une annonce
-@app.route("/publier_annonce", ['GET', 'POST'])
+@app.route("/publier_annonce", methods = ['GET', 'POST'])
 def publier_annonce():
     # On vérifie que l'utilisateur est connecté
     if "utilisateur" in session :
@@ -113,6 +113,7 @@ def publier_annonce():
             # On verifie que description et title ne sont pas vide
                 # On envoie l'annonce dans la bdd et on retourne sur la page d'accueil
             # Sinon erreur
+
         # (GET) On affiche la page pour publier 
         else:
             return render_template("publier_annonce.html")
