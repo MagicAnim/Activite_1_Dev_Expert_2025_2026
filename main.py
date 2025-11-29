@@ -108,18 +108,28 @@ def publier_annonce():
         if request.method == "POST":
             # On récupère la collection qui stockent les annonces 
             db_annonces = mongo.db.annonces
+            # On stocke les champs du formulaire
+            titre = request.form['titre']
+            description = request.form['description']
+            # On verifie que description et title ne sont pas vides
+            if titre:
 
-            ### A FINIR 
-            # On verifie que description et title ne sont pas vide
-                # On envoie l'annonce dans la bdd et on retourne sur la page d'accueil
-            # Sinon erreur
-
+            # On enregistre l'annonce dans la bdd et on retourne sur la page d'accueil
+                db_annonces.insert_one({
+                    'titre': titre,
+                    'auteur': session['utilisateur'],
+                    'description': description
+                })
+                # On renvoie vers la page avec un confirmation
+                return render_template("publier_annonce.html", message = "L'annonce est bien publiée ")
+            else :
+                return render_template("publier_annonce.html", erreur = "Veuillez renseigner le titre.")
         # (GET) On affiche la page pour publier 
         else:
             return render_template("publier_annonce.html")
     # On redirige vers la connexion
     else :
-        return redirect(url_for("logoin"))
+        return redirect(url_for("login"))
 
 
 # On teste notre base de données
